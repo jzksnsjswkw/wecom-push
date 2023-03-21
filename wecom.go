@@ -243,7 +243,7 @@ func (w *wecom) getMediaID(content []byte, filetype Filetype, filename string) (
 	return m["media_id"].(string), nil
 }
 
-type File struct {
+type FileInfo struct {
 	Touser   string
 	AgentID  int
 	Content  []byte
@@ -256,7 +256,7 @@ type File struct {
 	Description string
 }
 
-func (w *wecom) File(f *File) error {
+func (w *wecom) File(f *FileInfo) error {
 	m, err := w.getMediaID(f.Content, f.Filetype, f.Filename)
 	if err != nil {
 		return err

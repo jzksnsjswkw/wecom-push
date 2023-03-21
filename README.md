@@ -34,7 +34,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	err = w.File(&wecom.File{
+	err = w.File(&wecom.FileInfo{
 		Touser:   "Pony",
 		AgentID:  1000002,
 		Content:  b,
