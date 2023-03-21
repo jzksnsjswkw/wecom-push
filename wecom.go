@@ -117,8 +117,8 @@ func (w *wecom) send(getResp func() ([]byte, error)) ([]byte, error) {
 			}
 			w.isFirstAccessTokenErr = false
 			err := w.getAccessToken()
+			w.pushLock.Unlock()
 			if err != nil {
-				w.pushLock.Unlock()
 				return nil, err
 			}
 			resp, err = w.send(getResp)
