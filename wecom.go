@@ -107,14 +107,6 @@ func (w *wecom) send(getResp func() ([]byte, error)) ([]byte, error) {
 		w.pushLock.Unlock()
 	} else if r.ErrCode == 42001 || r.ErrCode == 40014 || r.ErrCode == 41001 {
 		if w.isFirstAccessTokenErr {
-			switch r.ErrCode {
-			case 42001:
-				fmt.Println("access_token过期")
-			case 40014:
-				fmt.Println("access_token无效")
-			case 41001:
-				fmt.Println("access_token错误")
-			}
 			w.isFirstAccessTokenErr = false
 			err := w.getAccessToken()
 			w.pushLock.Unlock()
